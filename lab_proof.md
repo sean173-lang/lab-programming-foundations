@@ -1,116 +1,71 @@
 HomeGuard – Lab Proof
 
-1. Program File
+1. Program Path
 
 homeguard_system.py
 
 2. How to Run
 
-Open the terminal in the project folder and run:
+Run the program using:
 
 python3 homeguard_system.py
 
-3. Project Description
+3. Program Description
 
 HomeGuard is a simple smart-home security simulator written in Python.
 
-The program uses a Sensor class to monitor four sensors:
+It monitors four sensors: temperature, smoke, motion, and door.
 
-Temperature
+The program uses a Sensor class, functions, dictionaries, lists, loops, and conditional statements. It supports HOME, AWAY, and SLEEP modes and records alerts with timestamps.
 
-Smoke
+4. Deterministic Test Results
 
-Motion
+The program was tested with three scans using fixed sensor readings.
 
-Door
+Actual Terminal Output
 
-It supports three modes: HOME, AWAY, and SLEEP.
+--- SCAN 1 ---
+Mode: HOME
+Kitchen : 68
+Hallway : False
+Living Room : False
+Front Door : False
 
-The program uses functions, dictionaries, lists, loops, and if/else statements to detect problems and display alerts. It also records events with timestamps.
+--- SCAN 2 ---
+Mode: AWAY
+Kitchen : 30
+Hallway : True
+Living Room : True
+Front Door : True
+15:51:25 - ALERT: Frozen pipe risk!
+15:51:25 - ALERT: Smoke detected!
+15:51:25 - ALERT: Motion detected while away!
+15:51:25 - ALERT: Door opened while away!
+15:51:25 - ALERT: Motion and door triggered together!
 
-4. Deterministic Tests
+--- SCAN 3 ---
+Mode: SLEEP
+Kitchen : 100
+Hallway : False
+Living Room : False
+Front Door : True
+15:51:25 - ALERT: Equipment failure risk!
+15:51:25 - ALERT: Door open longer than 5 minutes!
 
-The simulator runs three scans with fixed readings.
+--- RANDOM READINGS ---
+{'temperature': 47, 'smoke': True, 'motion': True, 'door': False}
 
-Scan
+--- RESET TEST ---
+After reset: None
+Abnormal: False
 
-Mode
-
-Temperature
-
-Smoke
-
-Motion
-
-Door
-
-1
-
-HOME
-
-68°F
-
-False
-
-False
-
-False
-
-2
-
-AWAY
-
-30°F
-
-True
-
-True
-
-True
-
-3
-
-SLEEP
-
-100°F
-
-False
-
-False
-
-True
-
-Expected Results
-
-Scan 1: No alerts.
-
-Scan 2:
-
-Frozen pipe risk
-
-Smoke detected
-
-Motion detected while away
-
-Door opened while away
-
-Motion and door triggered together
-
-Scan 3:
-
-Equipment failure risk
-
-Door open longer than 5 minutes
-
-Actual Output
-
-Paste the actual terminal output here after running the program:
-
-[INSERT ACTUAL OUTPUT]
+--- SUMMARY ---
+Total alerts: 7
+Total logged events: 7
 
 5. Edge Case Test
 
-The temperature sensor is reset using reset().
+Test: Resetting the temperature sensor.
 
 Expected result:
 
@@ -118,22 +73,23 @@ The sensor value becomes None.
 
 isAbnormal() returns False.
 
-The program does not crash.
+The program continues without errors.
 
 Actual result:
 
-[INSERT ACTUAL RESULT]
+After reset: None
+Abnormal: False
+
+Result: Passed.
 
 6. Random Readings
 
-The program also demonstrates randomly generated sensor readings using Python's random module.
+The program also generates random sensor readings using Python's random module.
 
-The fixed test cases are used separately to make the tests reproducible.
+The random readings are separate from the fixed test cases, making the main tests reproducible.
 
 7. What I Learned
 
-During this project, I learned how to use Python variables, dictionaries, lists, conditions, loops, and functions.
+I learned how to use Python functions, classes, dictionaries, lists, loops, and if/else statements.
 
-I also learned how to create a class, use self, and define methods such as read(), isAbnormal(), and reset().
-
-The most challenging part was connecting the different parts of the program and understanding indentation.
+I also learned how to create sensor objects, check their readings, generate alerts, and reset sensors.
